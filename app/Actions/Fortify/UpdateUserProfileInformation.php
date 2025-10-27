@@ -20,7 +20,6 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         Validator::make($input, [
             'firstname' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
-            'role' => ['required', 'string', 'max:100', Rule::in(['admin', 'entrepreneur_approuvé', 'entrepreneur_en_attente', 'client'])],
             'email' => [
                 'required',
                 'string',
@@ -36,6 +35,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         } else {
             $user->forceFill([
                 'firstname' => $input['firstname'],
+                'lastname' => $input['lastname'],
                 'email' => $input['email'],
             ])->save();
         }
@@ -49,7 +49,8 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
     protected function updateVerifiedUser(User $user, array $input): void
     {
         $user->forceFill([
-            'name' => $input['name'],
+            'firstname' => $input['firstname'],
+            'lastname' => $input['lastname'],
             'email' => $input['email'],
             'email_verified_at' => null,
         ])->save();

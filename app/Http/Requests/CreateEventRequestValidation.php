@@ -24,6 +24,7 @@ class CreateEventRequestValidation extends FormRequest
         return [
             'name'=>'required|string|max:255',
             'description'=>'required|text',
+            'statuts'=>'required|enum:pending,approved,refused',
             'image'=>'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }

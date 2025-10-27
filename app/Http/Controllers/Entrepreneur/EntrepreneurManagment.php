@@ -21,6 +21,7 @@ class EntrepreneurManagment extends Controller
             $validated = $request->validated();
             $user_id = Auth::User();
             $validated['user_id'] = $user_id;
+            $validated['statuts'] = 'pending';
             Event::create($validated);
             return view('pendingPage');
         } catch (\Throwable $th) {

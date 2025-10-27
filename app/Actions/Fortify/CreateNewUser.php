@@ -9,20 +9,14 @@ use Illuminate\Validation\Rule;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 
 class CreateNewUser implements CreatesNewUsers
-{   
+{
     use PasswordValidationRules;
 
-    /**
-     * Validate and create a newly registered user.
-     *
-     * @param  array<string, string>  $input
-     */
     public function create(array $input): User
     {
         Validator::make($input, [
             'firstname' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
-            'role' => ['required', 'string', 'max:100', Rule::in(['admin', 'entrepreneur_approuvé', 'entrepreneur_en_attente', 'client'])],
             'email' => [
                 'required',
                 'string',
@@ -38,7 +32,7 @@ class CreateNewUser implements CreatesNewUsers
             'lastname' => $input['lastname'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
-            'role' => $input['role'],
+            'role' => 'client', // Rôle par défaut
         ]);
     }
 }
