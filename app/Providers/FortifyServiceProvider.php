@@ -21,7 +21,7 @@ class FortifyServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        // ✅ Binding pour la vue de register
+        //  Binding pour la vue de register
         $this->app->singleton(RegisterViewResponse::class, function () {
             return new class implements RegisterViewResponse {
                 public function toResponse($request)
@@ -31,7 +31,7 @@ class FortifyServiceProvider extends ServiceProvider
             };
         });
 
-        // ✅ Binding pour la vue de login
+        //  Binding pour la vue de login
         $this->app->singleton(LoginViewResponse::class, function () {
             return new class implements LoginViewResponse {
                 public function toResponse($request)
@@ -41,7 +41,7 @@ class FortifyServiceProvider extends ServiceProvider
             };
         });
 
-        // ✅ Binding pour la vue forgot-password
+        // Binding pour la vue forgot-password
         $this->app->singleton(RequestPasswordResetLinkViewResponse::class, function () {
             return new class implements RequestPasswordResetLinkViewResponse {
                 public function toResponse($request)
@@ -51,7 +51,7 @@ class FortifyServiceProvider extends ServiceProvider
             };
         });
 
-        // ✅ Binding pour la vue reset-password
+        //  Binding pour la vue reset-password
         $this->app->singleton(ResetPasswordViewResponse::class, function () {
             return new class implements ResetPasswordViewResponse {
                 public function toResponse($request)
@@ -64,13 +64,13 @@ class FortifyServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        // ✅ Actions Fortify
+        //  Actions Fortify
         Fortify::createUsersUsing(CreateNewUser::class);
         Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
         Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
         Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
 
-        // ✅ Rate Limiting
+        //  Rate Limiting
         RateLimiter::for('login', function (Request $request) {
             $throttleKey = Str::transliterate(Str::lower($request->input(Fortify::username())).'|'.$request->ip());
             return Limit::perMinute(5)->by($throttleKey);

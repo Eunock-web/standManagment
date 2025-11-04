@@ -26,6 +26,7 @@ class CreateEventRequestValidation extends FormRequest
             'description'=>'required|text',
             'statuts'=>'required|enum:pending,approved,refused',
             'image'=>'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'user_id' => 'required|exists:users,id'
         ];
     }
 
