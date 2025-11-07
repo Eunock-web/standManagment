@@ -26,7 +26,7 @@ class FortifyServiceProvider extends ServiceProvider
             return new class implements RegisterViewResponse {
                 public function toResponse($request)
                 {
-                    return view('auth.register');
+                    return view('livewire.auth.admin-auth');
                 }
             };
         });

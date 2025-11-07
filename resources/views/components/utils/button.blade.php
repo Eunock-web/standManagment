@@ -1,0 +1,1 @@
+<button class="btn bg-rose-400 text-white hover:bg-rose-500 hover:text-white text-center px-5 py-2 rounded-2xl">  {{ content }} </button>
