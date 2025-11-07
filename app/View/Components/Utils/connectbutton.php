@@ -6,18 +6,14 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class label extends Component
+class connectbutton extends Component
 {
     /**
      * Create a new component instance.
      */
-    public $labelfor;
-    public $label;
-
-    public function __construct($labelfor, $label)
+    public function __construct()
     {
-        $this->labelfor = $labelfor;
-        $this->label = $label;
+        //
     }
 
     /**
@@ -25,6 +21,6 @@ class label extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.utils.label');
+        return view('components.utils.connectbutton');
     }
 }

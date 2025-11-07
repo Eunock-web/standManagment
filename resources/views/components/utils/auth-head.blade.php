@@ -1,4 +1,4 @@
-<div class="flex flex-row gap-3 items-center justify-center">
+<div class="flex flex-row gap-4 items-center justify-center">
     <div class="">
         <x-gmdi-admin-panel-settings class="w-13 h-13 text-white bg-rose-400 p-3 rounded-2xl shadow-lg shadow-rose-400/50 " />
     </div>
